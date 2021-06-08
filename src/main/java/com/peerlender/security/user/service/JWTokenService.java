@@ -47,17 +47,13 @@ public class JWTokenService implements TokenService{
 
     @Override
     public Map<String, String> untrusted(String token) {
-        final JwtParser parser = getJwtParser();
-
         final String noSignature = StringUtils.substringBeforeLast(token,DOT) + DOT;
-        return parseClaims(() -> parser.parseClaimsJws(token).getBody());
+        return parseClaims(() -> getJwtParser().parseClaimsJws(token).getBody());
     }
 
     @Override
     public Map<String, String> verify(String token) {
-        final JwtParser parser = getJwtParser()
-                .setSigningKey(secretKey);
-
+        final JwtParser parser = getJwtParser().setSigningKey(secretKey);
         return parseClaims(() -> parser.parseClaimsJws(token).getBody());
     }
 
