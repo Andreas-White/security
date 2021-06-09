@@ -13,6 +13,12 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private UserDetailsImpl userDetails;
 
+    public User() {}
+
+    public User(UserDetailsImpl userDetails) {
+        this.userDetails = userDetails;
+    }
+
     public long getId() {
         return id;
     }
