@@ -1,6 +1,7 @@
-package com.peerlender.security.user.service;
+package com.peerlender.security.user.service.implementation;
 
 import com.google.common.collect.ImmutableMap;
+import com.peerlender.security.user.service.TokenService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.impl.compression.GzipCompressionCodec;
 import org.apache.commons.lang3.StringUtils;
@@ -15,7 +16,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 @Component
-public class JWTokenService implements TokenService{
+public class JWTokenService implements TokenService {
 
     private static final String DOT = ".";
     private static final GzipCompressionCodec COMPRESSION_CODEC = new GzipCompressionCodec();
