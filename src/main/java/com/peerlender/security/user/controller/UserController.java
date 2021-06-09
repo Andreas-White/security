@@ -24,7 +24,15 @@ public class UserController {
     }
 
     @PostMapping(value = "register")
-    public void register(@RequestBody UserDetailsImpl userDetails) {
+    public String register(@RequestBody UserDetailsImpl userDetails) {
         userRepository.save(new User(userDetails));
+        return login(userDetails);
+    }
+
+    @PostMapping(value = "/login")
+    public String login(@RequestBody UserDetailsImpl userDetails) {
+        return authenticationService
+                .login(userDetails.getUsername(),userDetails.getPassword())
+                .orElseThrow(()-> new RuntimeException("invalid login details"));
     }
 }
