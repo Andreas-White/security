@@ -20,7 +20,7 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
 
     private final static String BEARER = "Bearer";
 
-    protected TokenAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
+    public TokenAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
         super(requiresAuthenticationRequestMatcher);
     }
 
